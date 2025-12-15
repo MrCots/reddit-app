@@ -2,6 +2,31 @@
 
 This project is a web application that uses the Reddit JSON API to allow users to view and search for posts and comments. It is built with a modern frontend stack, including React and Redux, and features a clean, responsive design.
 
+## Wireframes
+
+### Desktop View
+
+```
++------------------------------------------------------------------+
+| Header: Reddit /r/popular [ Search...        ] [Search]          |
++------------------------------------------------+-----------------+
+|                                                |                 |
+| +--------------------------------------------+ | Subreddits      |
+| | Post 1 Card                                | |                 |
+| | - Votes, Thumbnail, Title, Meta            | | - /r/pics       |
+| +--------------------------------------------+ | - /r/reactjs    |
+|                                                | - /r/askreddit  |
+| +--------------------------------------------+ | - ...           |
+| | Post 2 Card                                | |                 |
+| | - Votes, Thumbnail, Title, Meta            | |                 |
+| +--------------------------------------------+ |                 |
+|                                                |                 |
+| Main Content (Posts)                         | Sidebar         |
++------------------------------------------------+-----------------+
+```
+
+This project is a web application that uses the Reddit JSON API to allow users to view and search for posts and comments. It is built with a modern frontend stack, including React and Redux, and features a clean, responsive design.
+
 ## Features
 
 - **View Popular Posts**: See a list of the current popular posts on Reddit upon visiting the app.
@@ -21,6 +46,49 @@ This project is a web application that uses the Reddit JSON API to allow users t
 - **Playwright**: For reliable end-to-end (E2E) testing across modern browsers.
 - **Vitest**: A Vite-native unit testing framework. 
 - **React Testing Library**: For unit testing React components in a user-centric way.
+
+---
+## Getting Started
+
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+Make sure you have Node.js installed on your machine.
+- Node.js (v18 or higher is recommended. I used v25)
+
+### Installation
+
+1.  Clone the repository to your local machine:
+    ```bash
+    git clone https://github.com/your-username/reddit-app.git -- UPDATE!!
+    ```
+2.  Navigate into the project directory:
+    ```bash
+    cd reddit-app
+    ```
+3.  Install the project dependencies:
+    ```bash
+    npm install
+    ```
+
+---
+
+## Available Scripts
+
+In the project directory, you can run the following commands:
+
+### `npm run dev`
+
+Runs the app in development mode. Open http://localhost:5173 to view it in your browser. The page will reload when you make changes.
+
+### `npm test`
+
+Launches the unit test runner (Vitest) in interactive watch mode.
+
+### `npx playwright test`
+
+Runs the end-to-end tests using Playwright. This will start the development server and run tests in a headless browser.
 
 ---
 
