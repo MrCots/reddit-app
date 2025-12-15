@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setSelectedPost } from './postsSlice';
+import { formatNumber } from '../../utils/formatNumber.js';
 
 /**
  * A component that renders a single post in a card format.
@@ -29,13 +30,13 @@ const Post = ({ post }) => {
     <article className="post-card" onClick={handlePostClick}>
       <div className="post-votes">
         <span>▲</span>
-        <strong>{post.score}</strong>
+        <strong>{formatNumber(post.score)}</strong>
         <span>▼</span>
       </div>
       {renderThumbnail()}
       <div className="post-content">
         <h3>{post.title}</h3>
-        <p className="post-meta">Posted by {post.author} | {post.num_comments} comments</p>
+        <p className="post-meta">Posted by {post.author} | {formatNumber(post.num_comments)} comments</p>
       </div>
     </article>
   );

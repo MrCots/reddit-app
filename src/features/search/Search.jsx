@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchPosts } from '../posts/postsSlice';
 
+/**
+ * A search component that allows users to search for posts in a specific subreddit.
+ * It maintains the state of the search term and dispatches an action to fetch posts
+ * when the form is submitted.
+ */
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch();

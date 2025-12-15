@@ -13,4 +13,15 @@ export default defineConfig({
       },
     },
   },
+  /**
+   * Vitest configuration.
+   * We are using Vitest and React Testing Library for our unit tests.
+   * This is the modern standard for testing React applications built with Vite,
+   * offering better performance and integration than older tools like Jest and Enzyme.
+   */
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.js',
+  },
 });
