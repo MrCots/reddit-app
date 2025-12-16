@@ -350,14 +350,14 @@ header {
 
 /* For Tablet Devices */
 @media (min-width: 768px) {
-  .subreddits-panel {
+  /*
     order: 2;
-    /* Make the subreddits panel sticky on scroll for tablets and up. */
+    /* Make the subreddits panel sticky on scroll for tablets and up */
     position: sticky;
-    /* The panel will stick 1rem from the top of its viewport. */
+    /* The panel will stick 1rem from the top of its container */
     top: 1rem;
   }
-}
+
 
 /* For Desktop Devices */
 @media (min-width: 1024px) {
