@@ -130,4 +130,5 @@ npx playwright test
 - Implement further animations and transitions to enhance user delight.
 - Add accessibility (a11y) improvements.
 - Write a more comprehensive suite of unit and E2E tests.
-- Deploy the application to a public URL.
+- Deploy the application to a public URL, like Netlify.
+- Improve media queries and front end.
