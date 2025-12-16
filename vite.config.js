@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -22,6 +23,8 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: './src/setupTests.js',
+    setupFiles: './tests/setupTests.js',
+    // Exclude Playwright E2E tests from the Vitest runner
+    exclude: ['**/node_modules/**', '**/tests/**'],
   },
 });

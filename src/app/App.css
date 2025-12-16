@@ -1,37 +1,40 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem; /* Adjusted padding for better mobile experience */
+}
+
+/* Add more horizontal padding on larger screens */
+@media (min-width: 768px) {
+  #root {
+    padding: 2rem;
+  }
 }
 
 header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* On mobile, stack the title and search bar vertically */
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem; /* Add space between stacked items */
   border-bottom: 1px solid #444;
   padding-bottom: 1rem;
   margin-bottom: 2rem;
+}
+
+/* For tablet and larger screens, switch to a horizontal layout */
+@media (min-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .app-container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-}
-
-/* On larger screens, use a two-column layout */
-@media (min-width: 768px) {
-  .app-container {
-    grid-template-columns: 2fr 1fr;
-  }
-
-  main {
-    order: 1;
-  }
-
-  .subreddits-panel {
-    order: 2;
-  }
 }
 
 .subreddits-panel {
@@ -253,6 +256,18 @@ header {
   overflow-y: auto;
   position: relative;
   color: #212529;
+  padding: 1.5rem; /* Reduce padding on mobile */
+}
+
+@media (min-width: 768px) {
+  .modal-content {
+    padding: 2rem; /* Restore padding for larger screens */
+  }
+
+  /* On tablets and larger, switch to a two-column layout. */
+  .app-container {
+    grid-template-columns: 2fr 1fr;
+  }
 }
 
 .modal-close-button {
@@ -323,4 +338,47 @@ header {
 .comment-body-placeholder {
   width: 90%;
   height: 0.9rem;
+}
+
+/*
+  ========================================
+  Responsive Media Queries
+  ========================================
+  We use a mobile-first approach. The base styles in this file are for mobile devices,
+  and we use `min-width` media queries to add styles for larger screens.
+*/
+
+/* For Tablet Devices */
+@media (min-width: 768px) {
+  /*
+    order: 2;
+    /* Make the subreddits panel sticky on scroll for tablets and up */
+    position: sticky;
+    /* The panel will stick 1rem from the top of its container */
+    top: 1rem;
+  }
+}
+
+/* For Desktop Devices */
+@media (min-width: 1024px) {
+  /*
+   * This block applies styles for screens that are 1024px wide or wider.
+   * You can increase font sizes, margins, or switch to a more complex layout.
+   */
+  body {
+    font-size: 18px; /* Example: Increase base font size for better readability */
+  }
+}
+
+/* For Large Desktop Devices */
+@media (min-width: 1280px) {
+  /*
+   * This block applies styles for very large screens (1280px and wider).
+   * This is useful for increasing the max-width of the container to use
+   * the extra space, without making content lines too long to read.
+   */
+  #root {
+    /* Example: Limit the maximum width of the app for better readability on wide screens */
+    max-width: 1280px;
+  }
 }

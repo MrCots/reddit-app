@@ -4,13 +4,16 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import * as Redux from 'react-redux';
 import Search from './Search.jsx';
 import { fetchPosts } from '../../features/posts/postsSlice';
-
 /**
  * Mock the 'react-redux' library.
  * This allows us to provide a mock `useDispatch` hook for our tests,
  * isolating the component from the actual Redux store.
+ * We also mock the postsSlice to control the fetchPosts action creator.
  */
 vi.mock('react-redux');
+vi.mock('../../features/posts/postsSlice', () => ({
+  fetchPosts: vi.fn((payload) => ({ type: 'posts/fetchPosts/pending', meta: { arg: payload } })),
+}));
 
 /**
  * Test suite for the Search component.
@@ -49,9 +52,7 @@ describe('Search component', () => {
     // We check that dispatch was called once.
     expect(mockDispatch).toHaveBeenCalledTimes(1);
 
-    // We then check that the action dispatched has the correct type prefix and argument.
-    const dispatchedAction = mockDispatch.mock.calls[0][0];
-    expect(dispatchedAction.type).toBe(`${fetchPosts.typePrefix}/pending`);
-    expect(dispatchedAction.meta.arg).toBe(searchTerm);
+    // We then check that fetchPosts was called with the correct search term.
+    expect(fetchPosts).toHaveBeenCalledWith(searchTerm);
   });
 });
