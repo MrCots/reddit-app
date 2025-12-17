@@ -1,0 +1,14 @@
+# This is the configuration file for your Netlify site.
+
+# The 'build' command and 'publish' directory are likely already configured
+# in your Netlify UI, but it's good practice to define them here.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# This rule tells Netlify to proxy any request starting with /api/
+# to the Reddit API. The status code 200 makes it a "rewrite".
+[[redirects]]
+  from = "/api/*"
+  to = "https://www.reddit.com/:splat"
+  status = 200

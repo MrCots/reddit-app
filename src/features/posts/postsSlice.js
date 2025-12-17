@@ -7,11 +7,16 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
  */
 export const fetchPosts = createAsyncThunk(
   'posts/fetchPosts',
-  async (subreddit = 'popular') => {
-    const response = await fetch(`/api/r/${subreddit}.json`);
-    const json = await response.json();
-    // Map over the children and return the data for each post
-    return json.data.children.map((post) => post.data);
+  async (subreddit = 'popular', { rejectWithValue }) => {
+    try {
+      const response = await fetch(`/api/r/${subreddit}.json`); // This relative path works in local development due to Vite's proxy, but not on Netlify without a specific rule.
+      const json = await response.json();
+      // Map over the children and return the data for each post
+      return json.data.children.map((post) => post.data);
+    } catch (error) {
+      // Explicitly reject with the error message for consistency
+      return rejectWithValue(error.message);
+    }
   }
 );
 
@@ -49,7 +54,7 @@ const postsSlice = createSlice({
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.error.message;
+        state.error = action.payload; // Use action.payload, which is populated by rejectWithValue
       })
       // When clearSelectedPost is dispatched, also clear the selected post state
       .addCase(postsSlice.actions.clearSelectedPost, (state) => {
