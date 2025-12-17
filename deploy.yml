@@ -41,7 +41,7 @@ jobs:
         run: npm run build
 
       # Step 6: Deploys the built site to Netlify using a dedicated action.
-      - name="Deploy to Netlify"
+      - name: "Deploy to Netlify"
         uses: nwtgck/actions-netlify@v3
         with:
           publish-dir: './dist' # The folder that contains the built site.
